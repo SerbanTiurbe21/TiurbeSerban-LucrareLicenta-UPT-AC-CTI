@@ -1,0 +1,21 @@
+[submodule "interview-management-app-licenta"]
+	path = interview-management-app-licenta
+	url = https://github.com/SerbanTiurbe21/interview-management-app-licenta.git
+[submodule "CandidateMicroservice"]
+	path = CandidateMicroservice
+	url = https://github.com/SerbanTiurbe21/CandidateMicroservice.git
+[submodule "user-keycloak"]
+	path = user-keycloak
+	url = https://github.com/SerbanTiurbe21/user-keycloak.git
+[submodule "questions-microservice"]
+	path = questions-microservice
+	url = https://github.com/SerbanTiurbe21/questions-microservice.git
+[submodule "isds"]
+	path = isds
+	url = https://github.com/SerbanTiurbe21/isds.git
+[submodule "GatewayService"]
+	path = GatewayService
+	url = https://github.com/SerbanTiurbe21/GatewayService.git
+[submodule "EurekaService"]
+	path = EurekaService
+	url = https://github.com/SerbanTiurbe21/EurekaService.git
