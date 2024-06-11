@@ -1,0 +1,127 @@
+version: "3"
+services:
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - eureka-network
+  eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    environment:
+      - eureka.client.registerWithEureka=false
+      - eureka.client.fetchRegistry=false
+    networks:
+      - eureka-network
+
+  redis-server:
+    image: redis/redis-stack-server:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - eureka-network
+
+  zipkin-server:
+    image: openzipkin/zipkin:latest
+    ports:
+      - "9411:9411"
+    networks:
+      - eureka-network
+
+  isds-server:
+    image: isds-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm
+      - spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm/protocol/openid-connect/certs
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://serbantiurbe:gfKlzad6pSyYoVEA@interviewcompanionappcl.0dt0g6v.mongodb.net/?retryWrites=true&w=majority&appName=InterviewCompanionAppCluster
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+    networks:
+      - eureka-network
+
+  questions-server:
+    image: questions-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm
+      - spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm/protocol/openid-connect/certs
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://serbantiurbe:gfKlzad6pSyYoVEA@interviewcompanionappcl.0dt0g6v.mongodb.net/?retryWrites=true&w=majority&appName=InterviewCompanionAppCluster
+    networks:
+      - eureka-network
+    depends_on:
+      - eureka-server
+    ports:
+      - "8083:8083"
+
+  candidates-server:
+    image: candidates-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm
+      - spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm/protocol/openid-connect/certs
+      - SPRING_DATA_MONGODB_URI=mongodb+srv://serbantiurbe:gfKlzad6pSyYoVEA@interviewcompanionappcl.0dt0g6v.mongodb.net/?retryWrites=true&w=majority&appName=InterviewCompanionAppCluster
+    networks:
+      - eureka-network
+    depends_on:
+      - eureka-server
+    ports:
+      - "8082:8082"
+
+  userkeycloak-server:
+    image: userkeycloak-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm
+      - spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm/protocol/openid-connect/certs
+      - KEYCLOAK_DOMAIN=host.docker.internal:9090
+      - KEYCLOAK_URLS_AUTH=http://host.docker.internal:9090
+      - KEYCLOAK_ADMINCLIENTID=admin-cli
+      - KEYCLOAK_ADMINCLIENTSECRET=FxxojtM3fNG48heZFubxGFuVgKTdjXyR
+      - KEYCLOAK_CLIENT=microservice-auth
+    networks:
+      - eureka-network
+    depends_on:
+      - eureka-server
+    ports:
+      - "8085:8085"
+
+  gateway-service:
+    image: gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - spring.redis.host=redis-server
+      - management.zipkin.tracing.endpoint=http://zipkin-server:9411/api/v2/spans
+      - spring.security.oauth2.resourceserver.jwt.issuer-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm
+      - spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://host.docker.internal:9090/realms/springboot-microservice-realm/protocol/openid-connect/certs
+    networks:
+      - eureka-network
+    depends_on:
+      - eureka-server
+      - redis-server
+      - zipkin-server
+    ports:
+      - "8080:8080"
+
+networks:
+  eureka-network:
+    driver: bridge
