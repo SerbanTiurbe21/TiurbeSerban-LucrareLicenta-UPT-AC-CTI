@@ -6,7 +6,7 @@ Acest repository centralizează sub-module pentru un sistem complex de managemen
  - Microserviciul ce Gestionează Utilizatorii și Autentificarea: https://github.com/SerbanTiurbe21/user-keycloak
  - Microserviciul "Candidates": https://github.com/SerbanTiurbe21/CandidateMicroservice
  - Microserviciul de Topicuri și Întrebări: https://github.com/SerbanTiurbe21/questions-microservice
- - Microserviciul ce Gestionează Documentele de Feedback și Scor:
+ - Microserviciul ce Gestionează Documentele de Feedback și Scor: https://github.com/SerbanTiurbe21/isds
  - Serviciul de Gateway: https://github.com/SerbanTiurbe21/isds
  - Serviciul de Înregistrare Eureka: https://github.com/SerbanTiurbe21/EurekaService
 
