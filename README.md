@@ -25,3 +25,43 @@ Dacă sub-modulele au fost actualizate, rulați următoarea comandă pentru a v�
 
 ## Construire și Rulare
 Fiecare sub-modul are propriile sale instrucțiuni de construire și rulare, specificate în fișierele README ale acestora. Navigați în directorul fiecărui sub-modul și urmați instrucțiunile.
+
+Pentru proiectele care reprezintă partea de back-end va trebui să urmați toți pașii până înainte de `Rularea Containerului Docker` și să vă opriți aici pentru că astfel nu se va putea realiza pasul următor din acest readme.
+
+Pentru a rula toate serviciile de backend am pus la dispoziție un fișier `docker-compose.yml`.
+
+### Rularea Tuturor Serviciilor Utilizând Docker Compose
+
+După ce ați clonat repository-ul și ați actualizat sub-modulele, puteți utiliza Docker Compose pentru a construi și rula toate serviciile asociate proiectului într-un mod coordonat. Acest lucru este ideal pentru a simula întregul mediu al aplicației pe mașina locală.
+
+### Verificare și Instalare Docker Compose
+
+Asigurați-vă că aveți Docker și Docker Compose instalate pe sistemul dvs. Acestea sunt necesare pentru a rula comenzi de Docker Compose. Docker Compose este inclus în majoritatea instalațiilor Docker pentru sistemele de operare Windows și Mac. Pentru Linux, s-ar putea să fie necesar să instalați Docker Compose separat.
+
+Puteți verifica dacă Docker Compose este instalat și funcțional cu comanda:
+
+`docker-compose --version`
+
+### Rularea Serviciilor
+
+Pentru a porni toate serviciile definite în fișierul `docker-compose.yml`, navigați în directorul rădăcină al proiectului unde se află acest fișier și rulați următoarea comandă:
+
+`docker-compose up`
+
+Aceasta va construi (dacă este necesar) și va porni toate containerele specificate pentru fiecare serviciu. Containerele vor fi legate conform configurărilor specificate, permițându-le să comunice între ele așa cum este definit în `docker-compose.yml`.
+
+Dacă doriți să rulați serviciile în fundal, puteți folosi opțiunea `-d`:
+
+`docker-compose up -d`
+
+### Oprire și Curățare
+
+Când doriți să opriți toate serviciile, puteți folosi comanda:
+
+`docker-compose down`
+
+Aceasta va opri toate containerele și va elimina containerele, rețelele create implicit, și volumul anonim, dar nu va șterge imagini construite.
+
+Pentru o curățare completă, care include și ștergerea imaginilor construite, puteți folosi:
+
+`docker-compose down --rmi all`
