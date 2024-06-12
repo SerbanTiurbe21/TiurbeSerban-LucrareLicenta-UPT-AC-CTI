@@ -16,12 +16,12 @@ Pentru a utiliza acest repository, urmați pașii de mai jos:
 ## Clonare repository
 Clonați acest repository pe mașina locală folosind:
 
-git clone --recurse-submodules https://github.com/SerbanTiurbe21/TiurbeSerban-LucrareLicenta-UPT-AC-CTI.git
+`git clone --recurse-submodules https://github.com/SerbanTiurbe21/TiurbeSerban-LucrareLicenta-UPT-AC-CTI.git`
 
 ## Actualizare sub-module
 Dacă sub-modulele au fost actualizate, rulați următoarea comandă pentru a vă asigura că aveți cele mai recente versiuni:
 
-git submodule update --recursive --remote
+`git submodule update --recursive --remote`
 
 ## Construire și Rulare
 Fiecare sub-modul are propriile sale instrucțiuni de construire și rulare, specificate în fișierele README ale acestora. Navigați în directorul fiecărui sub-modul și urmați instrucțiunile.
