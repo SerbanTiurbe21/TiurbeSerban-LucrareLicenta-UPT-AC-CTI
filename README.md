@@ -28,11 +28,9 @@ Fiecare sub-modul are propriile sale instrucțiuni de construire și rulare, spe
 
 Pentru proiectele care reprezintă partea de back-end va trebui să urmați toți pașii până înainte de `Rularea Containerului Docker` și să vă opriți aici pentru că astfel nu se va putea realiza pasul următor din acest readme.
 
-Pentru a rula toate serviciile de backend am pus la dispoziție un fișier `docker-compose.yml`.
+## Rularea Tuturor Serviciilor Utilizând Docker Compose
 
-### Rularea Tuturor Serviciilor Utilizând Docker Compose
-
-După ce ați clonat repository-ul și ați actualizat sub-modulele, puteți utiliza Docker Compose pentru a construi și rula toate serviciile asociate proiectului într-un mod coordonat. Acest lucru este ideal pentru a simula întregul mediu al aplicației pe mașina locală.
+După ce ați clonat repository-ul și ați actualizat sub-modulele, puteți utiliza Docker Compose pentru a construi și rula toate serviciile asociate proiectului într-un mod coordonat. În acest sens am pus la dispoziție un fișier docker-compose.yml pentru a rula toate containerele necesare funcționării corecte a backend-ului.
 
 ### Verificare și Instalare Docker Compose
 
