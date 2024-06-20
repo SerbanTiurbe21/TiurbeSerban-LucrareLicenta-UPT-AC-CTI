@@ -1,6 +1,8 @@
 # Proiect de Management al Procesului de Intervievare
 Acest repository centralizează sub-module pentru un sistem complex de management al procesului de intervievare în cadrul unei companii IT. Fiecare sub-modul reprezintă o componentă microserviciu a aplicației web full-stack.
 
+Fiecare sub-modul are un fișier de tip `read-me` propriu ce conține informații specifice fiecărui microserviciu/serviciu și poate fi accesat folosind link-urile din secțiunea de mai jos.
+
 # Sub-module incluse:
  - Proiectul de Frontend: https://github.com/SerbanTiurbe21/interview-management-app-licenta
  - Microserviciul ce Gestionează Utilizatorii și Autentificarea: https://github.com/SerbanTiurbe21/user-keycloak
