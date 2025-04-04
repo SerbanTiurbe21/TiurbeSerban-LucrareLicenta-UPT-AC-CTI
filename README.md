@@ -9,7 +9,7 @@ Fiecare sub-modul are un fișier de tip `read-me` propriu ce conține informați
  - Microserviciul "Candidates": https://github.com/SerbanTiurbe21/CandidateMicroservice
  - Microserviciul de Topicuri și Întrebări: https://github.com/SerbanTiurbe21/questions-microservice
  - Microserviciul ce Gestionează Documentele de Feedback și Scor: https://github.com/SerbanTiurbe21/isds
- - Serviciul de Gateway: https://github.com/SerbanTiurbe21/isds
+ - Serviciul de Gateway: https://github.com/SerbanTiurbe21/GatewayService
  - Serviciul de Înregistrare Eureka: https://github.com/SerbanTiurbe21/EurekaService
 
 # Cum să folosiți acest repository
